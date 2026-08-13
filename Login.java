@@ -1,28 +1,46 @@
-import java.util.*;
+import java.util.Scanner;
 
-public class Login {
-    static Map<String, String> users = new HashMap<>();
+class Login {
 
-    public static void main(String[] args) {
-        // pre-added users (email -> password)
-        users.put("admin@shop.com", "admin123");
-        users.put("sneha@shop.com", "sneha123");
+    static Scanner sc = new Scanner(System.in);
 
-        Scanner sc = new Scanner(System.in);
+    static boolean login() {
 
-        System.out.println("===== Shopping Website Login =====");
-        System.out.print("Enter email: ");
-        String email = sc.nextLine();
+        String correctUsername = "Sneha";
+        String correctPassword = "1728";
 
-        System.out.print("Enter password: ");
-        String password = sc.nextLine();
+        System.out.println("\n========== SNEHAHUB LOGIN ==========");
 
-        if (users.containsKey(email) && users.get(email).equals(password)) {
-            System.out.println("Login successful! Welcome, " + email);
-        } else {
-            System.out.println("Invalid email or password.");
+        for (int attempt = 1; attempt <= 3; attempt++) {
+
+            System.out.print("Enter Username: ");
+            String username = sc.nextLine();
+
+            System.out.print("Enter Password: ");
+            String password = sc.nextLine();
+
+            if (username.equals(correctUsername)
+                    && password.equals(correctPassword)) {
+
+                System.out.println("Login Successful!");
+                return true;
+
+            } else {
+                System.out.println("Invalid Username or Password!");
+                System.out.println("Attempts remaining: " + (3 - attempt));
+            }
         }
 
-        sc.close();
+        System.out.println("Account locked. Too many failed attempts.");
+        return false;
+    }
+
+    public static void main(String[] args) {
+
+        if (login()) {
+            System.out.println("Welcome to SNEHA HUB!");
+        } else {
+            System.out.println("Please try again later.");
+        }
     }
 }
