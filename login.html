@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Sneha Mart</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            width: 320px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #aaa;
+        }
+
+        h2 {
+            text-align: center;
+            color: #222;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        a {
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Login</h2>
+
+    <form onsubmit="loginUser(event)">
+
+        <input type="email"
+               id="email"
+               placeholder="Email"
+               required>
+
+        <input type="password"
+               id="password"
+               placeholder="Password"
+               required>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+    <p>Don't have an account?
+        <a href="register.html">Register</a>
+    </p>
+</div>
+
+<script>
+function loginUser(event) {
+    event.preventDefault();
+
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    let savedUser = localStorage.getItem("user");
+
+    if (savedUser === null) {
+        alert("No account found. Please register first.");
+        return;
+    }
+
+    let user = JSON.parse(savedUser);
+
+    if (email === user.email && password === user.password) {
+
+        alert("Login successful!");
+
+        window.location.href = "products.html";
+
+    } else {
+        alert("Invalid email or password!");
+    }
+}
+</script>
+
+</body>
+</html>
