@@ -1,133 +1,129 @@
 import java.util.*;
-import java.util.regex.Pattern;
 
-public class LoginModule {
+class Login {
 
-    // Stores email and password
-    static Map<String, String> users = new HashMap<>();
+    static Scanner sc = new Scanner(System.in);
 
-    // Email validation
-    static boolean isValidEmail(String email) {
-        String emailPattern =
-                "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+    // Stores username and password
+    static HashMap<String, String> users = new HashMap<>();
 
-        return Pattern.matches(emailPattern, email);
+    static void register() {
+
+        System.out.println("\n========== SNEHAMART USER REGISTRATION ==========");
+
+        System.out.print("Enter New Username: ");
+        String username = sc.nextLine();
+
+        if (users.containsKey(username)) {
+            System.out.println("Username already exists!");
+            return;
+        }
+
+        System.out.print("Enter New Password: ");
+        String password = sc.nextLine();
+
+        users.put(username, password);
+
+        System.out.println("Registration Successful!");
+        System.out.println("You can now login.");
     }
 
-    // Password validation
-    // Minimum 8 characters,
-    // at least one uppercase,
-    // one lowercase,
-    // one number
-    static boolean isValidPassword(String password) {
+    static boolean login() {
 
-        String passwordPattern =
-                "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$";
+        System.out.println("\n========== SNEHAMART USER LOGIN ==========");
 
-        return Pattern.matches(passwordPattern, password);
+        for (int attempt = 1; attempt <= 3; attempt++) {
+
+            System.out.print("Enter Username: ");
+            String username = sc.nextLine();
+
+            System.out.print("Enter Password: ");
+            String password = sc.nextLine();
+
+            if (users.containsKey(username)
+                    && users.get(username).equals(password)) {
+
+                System.out.println("Login Successful!");
+                System.out.println("Welcome to SnehaMart, " + username + "!");
+                return true;
+
+            } else {
+                System.out.println("Invalid Username or Password!");
+                System.out.println("Attempts remaining: " + (3 - attempt));
+            }
+        }
+
+        System.out.println("Account locked. Too many failed attempts.");
+        return false;
     }
 
-    // Register new user
-    static boolean register(String email, String password) {
+    static boolean sellerLogin() {
 
-        // Check email
-        if (!isValidEmail(email)) {
-            System.out.println("Invalid email!");
-            return false;
+        String correctUsername = "Seller";
+        String correctPassword = "5678";
+
+        System.out.println("\n========== SNEHAMART SELLER LOGIN ==========");
+
+        for (int attempt = 1; attempt <= 3; attempt++) {
+
+            System.out.print("Enter Username: ");
+            String username = sc.nextLine();
+
+            System.out.print("Enter Password: ");
+            String password = sc.nextLine();
+
+            if (username.equals(correctUsername)
+                    && password.equals(correctPassword)) {
+
+                System.out.println("Seller Login Successful!");
+                System.out.println("Welcome to SnehaMart Seller!");
+                return true;
+
+            } else {
+                System.out.println("Invalid Username or Password!");
+                System.out.println("Attempts remaining: " + (3 - attempt));
+            }
         }
 
-        // Check password
-        if (!isValidPassword(password)) {
-            System.out.println(
-                "Invalid password! Password must contain:"
-                + "\n- At least 8 characters"
-                + "\n- One uppercase letter"
-                + "\n- One lowercase letter"
-                + "\n- One number"
-            );
-            return false;
-        }
-
-        // Check existing user
-        if (users.containsKey(email)) {
-            System.out.println("User already exists!");
-            return false;
-        }
-
-        // Save user
-        users.put(email, password);
-
-        System.out.println("Registration successful!");
-        return true;
-    }
-
-    // Login
-    static boolean login(String email, String password) {
-
-        if (!users.containsKey(email)) {
-            System.out.println("User not found!");
-            return false;
-        }
-
-        if (!users.get(email).equals(password)) {
-            System.out.println("Incorrect password!");
-            return false;
-        }
-
-        System.out.println("Login successful!");
-        System.out.println("Welcome to Savana!");
-        return true;
+        System.out.println("Seller account locked.");
+        return false;
     }
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
-
         while (true) {
 
-            System.out.println("\n===== SAVANA LOGIN =====");
-            System.out.println("1. Register");
-            System.out.println("2. Login");
-            System.out.println("3. Exit");
-            System.out.print("Enter choice: ");
+            System.out.println("\n========== SNEHAMART ==========");
+            System.out.println("1. New User Registration");
+            System.out.println("2. User Login");
+            System.out.println("3. Seller Login");
+            System.out.println("4. Exit");
 
+            System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
             sc.nextLine();
 
             if (choice == 1) {
 
-                System.out.print("Enter email: ");
-                String email = sc.nextLine();
+                register();
 
-                System.out.print("Enter password: ");
-                String password = sc.nextLine();
+            } else if (choice == 2) {
 
-                register(email, password);
+                login();
 
-            } 
-            else if (choice == 2) {
+            } else if (choice == 3) {
 
-                System.out.print("Enter email: ");
-                String email = sc.nextLine();
+                sellerLogin();
 
-                System.out.print("Enter password: ");
-                String password = sc.nextLine();
-
-                login(email, password);
-
-            } 
-            else if (choice == 3) {
+            } else if (choice == 4) {
 
                 System.out.println("Thank you for visiting SnehaMart!");
                 break;
 
-            } 
-            else {
+            } else {
 
                 System.out.println("Invalid choice!");
             }
         }
-
-        sc.close();
     }
 }
