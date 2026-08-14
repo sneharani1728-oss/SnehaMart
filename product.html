@@ -1,367 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Sneha Mart - Sports Products</title>
+    <title>SnehaMart - Women's Clothing</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            margin: 0;
+            background: #f8f5f6;
         }
 
-        /* Header */
         header {
-            background-color: #111;
+            background: #222;
             color: white;
-            padding: 18px 40px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 20px;
+            text-align: center;
         }
 
         header h1 {
             margin: 0;
-            font-size: 28px;
-        }
-
-        .logout {
-            background-color: #e63946;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        .logout:hover {
-            background-color: #c1121f;
-        }
-
-        /* Welcome Section */
-        .welcome {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: white;
-        }
-
-        .welcome img {
-            width: 100%;
-            max-width: 1100px;
-            height: 320px;
-            object-fit: cover;
-            border-radius: 15px;
-            display: block;
-            margin: auto;
-        }
-
-        .welcome h2 {
-            font-size: 32px;
-            margin-top: 25px;
-            margin-bottom: 10px;
-        }
-
-        .welcome p {
-            font-size: 18px;
-            color: #555;
-        }
-
-        /* Products Section */
-        .products-section {
-            padding: 30px 50px;
-        }
-
-        .products-section h2 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 30px;
         }
 
         .products {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
-            max-width: 1100px;
-            margin: auto;
+            padding: 30px;
         }
 
-        /* Product Card */
         .product {
-            background-color: white;
-            padding: 20px;
-            text-align: center;
+            background: white;
             border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s;
-        }
-
-        .product:hover {
-            transform: translateY(-5px);
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .product img {
             width: 100%;
-            height: 180px;
-            object-fit: contain;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 10px;
         }
 
-        .product h3 {
+        .product h2 {
             font-size: 20px;
-            margin: 15px 0 8px;
-        }
-
-        .product p {
-            color: #666;
+            margin: 12px 0 5px;
         }
 
         .price {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
-            color: green !important;
+            margin: 8px;
         }
 
-        .cart {
-            background-color: #007bff;
+        button {
+            background: #222;
             color: white;
             border: none;
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 15px;
         }
 
-        .cart:hover {
-            background-color: #0056b3;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #111;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-
-            header {
-                padding: 15px 20px;
-            }
-
-            .welcome img {
-                height: 220px;
-            }
-
-            .products-section {
-                padding: 25px 20px;
-            }
-
-            .products {
-                grid-template-columns: 1fr;
-            }
+        button:hover {
+            background: #555;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header>
-
-        <h1>Sneha Mart</h1>
-
-        <button class="logout" onclick="logout()">
-            Logout
-        </button>
-
-    </header>
-
-
-    <!-- WELCOME SECTION -->
-    <section class="welcome">
-
-        <!-- Put sports-banner.jpg in the same folder -->
-        <img src="sports-banner.jpg" alt="Sneha Mart Sports">
-
-        <h2>Welcome to Sneha Mart</h2>
-
-        <p>
-            Your one-stop destination for quality sports and fitness products
-        </p>
-
-    </section>
-
-
-    <!-- PRODUCTS -->
-    <section class="products-section">
-
-        <h2>Our Sports Products</h2>
-
-        <div class="products">
-
-
-            <!-- PRODUCT 1 -->
-            <div class="product">
-
-                <img
-                    src="https://via.placeholder.com/250x180?text=Football"
-                    alt="Football">
-
-                <h3>Football</h3>
-
-                <p>Professional quality football</p>
-
-                <p class="price">₹799</p>
-
-                <button class="cart" onclick="addToCart('Football')">
-                    Add to Cart
-                </button>
-
-            </div>
-
-
-            <!-- PRODUCT 2 -->
-            <div class="product">
-
-                <img
-                    src="https://via.placeholder.com/250x180?text=Cricket+Bat"
-                    alt="Cricket Bat">
-
-                <h3>Cricket Bat</h3>
-
-                <p>Premium cricket bat</p>
-
-                <p class="price">₹1,499</p>
-
-                <button class="cart" onclick="addToCart('Cricket Bat')">
-                    Add to Cart
-                </button>
-
-            </div>
-
-
-            <!-- PRODUCT 3 -->
-            <div class="product">
-
-                <img
-                    src="https://via.placeholder.com/250x180?text=Basketball"
-                    alt="Basketball">
-
-                <h3>Basketball</h3>
-
-                <p>Official size basketball</p>
-
-                <p class="price">₹899</p>
-
-                <button class="cart" onclick="addToCart('Basketball')">
-                    Add to Cart
-                </button>
-
-            </div>
-
-
-            <!-- PRODUCT 4 -->
-            <div class="product">
-
-                <img
-                    src="https://via.placeholder.com/250x180?text=Gym+Gloves"
-                    alt="Gym Gloves">
-
-                <h3>Gym Gloves</h3>
-
-                <p>Comfortable workout gloves</p>
-
-                <p class="price">₹499</p>
-
-                <button class="cart" onclick="addToCart('Gym Gloves')">
-                    Add to Cart
-                </button>
-
-            </div>
-
-
-            <!-- PRODUCT 5 -->
-            <div class="product">
-
-                <img
-                    src="https://via.placeholder.com/250x180?text=Dumbbells"
-                    alt="Dumbbells">
-
-                <h3>Dumbbells</h3>
-
-                <p>5kg fitness dumbbells</p>
-
-                <p class="price">₹1,299</p>
-
-                <button class="cart" onclick="addToCart('Dumbbells')">
-                    Add to Cart
-                </button>
-
-            </div>
-
-
-            <!-- PRODUCT 6 -->
-            <div class="product">
-
-                <img
-                    src="https://via.placeholder.com/250x180?text=Badminton"
-                    alt="Badminton Racket">
-
-                <h3>Badminton Racket</h3>
-
-                <p>Lightweight badminton racket</p>
-
-                <p class="price">₹999</p>
-
-                <button class="cart" onclick="addToCart('Badminton Racket')">
-                    Add to Cart
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer>
-
-        <p>© 2026 Sneha Mart | Sports & Fitness Store</p>
-
-    </footer>
-
-
-    <!-- JAVASCRIPT -->
-    <script>
-
-        function addToCart(productName) {
-
-            alert(productName + " added to cart!");
-
-        }
-
-
-        function logout() {
-
-            window.location.href = "login.html";
-
-        }
-
-    </script>
+<header>
+    <h1>🛍️ SnehaMart</h1>
+    <p>Women's Fashion Collection</p>
+</header>
+
+<section class="products">
+
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=500&q=80">
+        <h2>Elegant Kurti</h2>
+        <p class="price">₹799</p>
+        <button>Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=500&q=80">
+        <h2>Designer Saree</h2>
+        <p class="price">₹1,499</p>
+        <button>Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?auto=format&fit=crop&w=500&q=80">
+        <h2>Western Dress</h2>
+        <p class="price">₹999</p>
+        <button>Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1564257577054-7e1b6b734c0d?auto=format&fit=crop&w=500&q=80">
+        <h2>Crop Top</h2>
+        <p class="price">₹499</p>
+        <button>Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=500&q=80">
+        <h2>Salwar Suit</h2>
+        <p class="price">₹1,199</p>
+        <button>Buy Now</button>
+    </div>
+
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1585488433566-0e9f3b2c9b9a?auto=format&fit=crop&w=500&q=80">
+        <h2>Anarkali Dress</h2>
+        <p class="price">₹1,399</p>
+        <button>Buy Now</button>
+    </div>
+
+</section>
 
 </body>
-
 </html>
