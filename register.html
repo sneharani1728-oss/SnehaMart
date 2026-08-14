@@ -1,63 +1,111 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>YuvaMart Register</title>
+    <title>Register - Sneha Mart</title>
     <style>
-        body{
-            margin:0;
-            font-family:Arial, sans-serif;
-            background:#f4f4f4;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            height:100vh;
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        .container{
-            background:white;
-            padding:30px;
-            width:350px;
-            border-radius:10px;
-            box-shadow:0 0 10px gray;
+
+        .box {
+            background: white;
+            padding: 30px;
+            width: 320px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #aaa;
         }
-        h2{
-            text-align:center;
-            color:green;
+
+        h2 {
+            text-align: center;
+            color: #222;
         }
-        input{
-            width:100%;
-            padding:10px;
-            margin:10px 0;
-            border:1px solid #ccc;
-            border-radius:5px;
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
         }
-        button{
-            width:100%;
-            padding:10px;
-            background:green;
-            color:white;
-            border:none;
-            border-radius:5px;
-            cursor:pointer;
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
         }
-        p{
-            text-align:center;
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        a {
+            color: #007bff;
         }
     </style>
 </head>
+
 <body>
-<div class="container">
-    <h2>YuvaMart Register</h2>
-    <form action="login.html">
-        <input type="text" placeholder="Enter Name" required>
-        <input type="email" placeholder="Enter Email" required>
-        <input type="password" placeholder="Enter Password" required>
-        <input type="password" placeholder="Confirm Password" required>
+
+<div class="box">
+    <h2>Create Account</h2>
+
+    <form onsubmit="registerUser(event)">
+        <input type="text" id="name" placeholder="Full Name" required>
+
+        <input type="email" id="email" placeholder="Email" required>
+
+        <input type="password" id="password" placeholder="Password" required>
+
+        <input type="password" id="confirmPassword"
+               placeholder="Confirm Password" required>
+
         <button type="submit">Register</button>
     </form>
-    <p>
-        Already have an account?
+
+    <p>Already have an account?
         <a href="login.html">Login</a>
     </p>
 </div>
+
+<script>
+function registerUser(event) {
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    let user = {
+        name: name,
+        email: email,
+        password: password
+    };
+
+    localStorage.setItem("user", JSON.stringify(user));
+
+    alert("Registration successful!");
+
+    window.location.href = "login.html";
+}
+</script>
+
 </body>
 </html>
