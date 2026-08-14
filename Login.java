@@ -118,7 +118,7 @@ public class LoginModule {
             } 
             else if (choice == 3) {
 
-                System.out.println("Thank you for visiting Savana!");
+                System.out.println("Thank you for visiting SnehaMart!");
                 break;
 
             } 
