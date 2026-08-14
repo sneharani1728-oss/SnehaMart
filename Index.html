@@ -1,204 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YuvaMart Login</title>
+    <style>
+        body{
+            margin:0;
+            font-family:Arial, sans-serif;
+            background:#f4f4f4;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+        .container{
+            background:white;
+            padding:30px;
+            width:350px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+        }
+        h2{
+            text-align:center;
+            color:#007bff;
+        }
+        input{
+            width:100%;
+            padding:10px;
+            margin:10px 0;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+        button{
+            width:100%;
+            padding:10px;
+            background:#007bff;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
 
-    <title>Savana - Women's Fashion</title>
-
-    <link rel="stylesheet" href="style.css">
+        p{
+            text-align:center;
+        }
+    </style>
 </head>
-
 <body>
-
-    <!-- NAVBAR -->
-
-    <header>
-
-        <div class="logo">
-            SAVANA
-        </div>
-
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#dresses">Dresses</a>
-            <a href="#new">New Arrivals</a>
-            <a href="#contact">Contact</a>
-        </nav>
-
-        <div class="cart">
-            🛒 Cart <span id="cartCount">0</span>
-        </div>
-
-    </header>
-
-
-    <!-- HERO -->
-
-    <section class="hero" id="home">
-
-        <div class="hero-content">
-
-            <p>NEW COLLECTION 2026</p>
-
-            <h1>
-                Discover Your
-                <br>
-                Perfect Style
-            </h1>
-
-            <p>
-                Elegant dresses designed for every occasion.
-            </p>
-
-            <button onclick="scrollToDresses()">
-                SHOP NOW
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- PRODUCTS -->
-
-    <section class="products" id="dresses">
-
-        <h2>Savana Dresses</h2>
-
-        <p class="subtitle">
-            Elegant styles made for you
-        </p>
-
-
-        <div class="product-grid">
-
-
-            <!-- DRESS 1 -->
-
-            <div class="product">
-
-                <img
-                src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=80"
-                alt="Floral Dress">
-
-                <div class="product-info">
-
-                    <h3>Floral Summer Dress</h3>
-
-                    <p class="price">
-                        ₹1,499
-                    </p>
-
-                    <button onclick="addToCart('Floral Summer Dress')">
-                        BUY NOW
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- DRESS 2 -->
-
-            <div class="product">
-
-                <img
-                src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80"
-                alt="Elegant Dress">
-
-                <div class="product-info">
-
-                    <h3>Elegant Evening Dress</h3>
-
-                    <p class="price">
-                        ₹2,299
-                    </p>
-
-                    <button onclick="addToCart('Elegant Evening Dress')">
-                        BUY NOW
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- DRESS 3 -->
-
-            <div class="product">
-
-                <img
-                src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=700&q=80"
-                alt="Black Dress">
-
-                <div class="product-info">
-
-                    <h3>Classic Black Dress</h3>
-
-                    <p class="price">
-                        ₹1,899
-                    </p>
-
-                    <button onclick="addToCart('Classic Black Dress')">
-                        BUY NOW
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- DRESS 4 -->
-
-            <div class="product">
-
-                <img
-                src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=700&q=80"
-                alt="Pink Dress">
-
-                <div class="product-info">
-
-                    <h3>Pink Party Dress</h3>
-
-                    <p class="price">
-                        ₹1,799
-                    </p>
-
-                    <button onclick="addToCart('Pink Party Dress')">
-                        BUY NOW
-                    </button>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer id="contact">
-
-        <h2>SAVANA</h2>
-
-        <p>
-            Fashion that speaks for you.
-        </p>
-
-        <p>
-            © 2026 Savana. All Rights Reserved.
-        </p>
-
-    </footer>
-
-
-    <script src="script.js"></script>
-
+<div class="container">
+    <h2>YuvaMart Login</h2>
+    <form action="welcome.html">
+        <input type="email" placeholder="Enter Email" required>
+        <input type="password" placeholder="Enter Password" required>
+        <button type="submit">Login</button>
+    </form>
+    <p>
+        New User?
+        <a href="register.html">Register</a>
+    </p>
+</div>
 </body>
-
-          </html>
+</html>
