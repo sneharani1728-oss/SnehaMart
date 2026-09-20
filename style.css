@@ -157,3 +157,26 @@ input, select {
   color: white;
   background: #32101d;
 }
+.product-image-wrap {
+  height: 330px;
+  overflow: hidden;
+  background: #f5e5df;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.35s ease;
+}
+
+.card:hover .product-image {
+  transform: scale(1.04);
+}
+
+.view-note {
+  color: #80636d;
+  font-size: 13px;
+}
