@@ -1,0 +1,7 @@
+target/
+*.mv.db
+*.trace.db
+.env
+config.properties
+.idea/
+*.iml

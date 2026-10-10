@@ -1,0 +1,7 @@
+package com.sneha.snehamart.listener;
+import com.zaxxer.hikari.HikariConfig;import com.zaxxer.hikari.HikariDataSource;import javax.servlet.*;import java.io.InputStream;import java.sql.Connection;import java.util.Properties;
+/** Owns the application connection pool lifecycle. */
+public final class DatabaseListener implements ServletContextListener {
+ public void contextInitialized(ServletContextEvent event){try{Properties p=new Properties();try(InputStream in=getClass().getClassLoader().getResourceAsStream("application.properties")){if(in!=null)p.load(in);}HikariConfig c=new HikariConfig();c.setJdbcUrl(System.getenv().getOrDefault("SNEHAMART_JDBC_URL",p.getProperty("jdbc.url","jdbc:h2:file:./data/snehamart;AUTO_SERVER=TRUE")));c.setUsername(System.getenv().getOrDefault("SNEHAMART_DB_USER",p.getProperty("jdbc.user","sa")));c.setPassword(System.getenv().getOrDefault("SNEHAMART_DB_PASSWORD",p.getProperty("jdbc.password","")));c.setMaximumPoolSize(10);c.setPoolName("SnehaMartPool");HikariDataSource ds=new HikariDataSource(c);event.getServletContext().setAttribute("dataSource",ds);try(Connection cn=ds.getConnection();var st=cn.createStatement()){st.execute("RUNSCRIPT FROM 'classpath:/db/migrations/V1__init_schema.sql'");st.execute("RUNSCRIPT FROM 'classpath:/db/seed.sql'");}}catch(Exception e){throw new IllegalStateException("SnehaMart database initialization failed",e);}}
+ public void contextDestroyed(ServletContextEvent event){Object ds=event.getServletContext().getAttribute("dataSource");if(ds instanceof HikariDataSource h)h.close();}
+}

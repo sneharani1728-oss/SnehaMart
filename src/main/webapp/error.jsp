@@ -1,0 +1,1 @@
+<%@ page contentType="text/html;charset=UTF-8" %><!doctype html><html><head><title>Oops · SnehaMart</title></head><body style="font:18px sans-serif;background:#faf6f0;text-align:center;padding:15vh 1rem;color:#31241f"><h1>Oh, that little page wandered off ✳</h1><p>Let's get you back to the good stuff.</p><a href="/snehamart/">Back to SnehaMart</a></body></html>
