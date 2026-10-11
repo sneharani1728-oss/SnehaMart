@@ -1,4 +1,0 @@
-package com.sneha.snehamart.filter;
-import javax.servlet.*;import javax.servlet.annotation.WebFilter;import javax.servlet.http.*;import java.io.IOException;import java.util.UUID;import org.slf4j.MDC;
-/** Sets UTF-8, a response request ID, and request-scoped logging context. */
-@WebFilter(urlPatterns="/*") public final class RequestContextFilter implements Filter {public void doFilter(ServletRequest request,ServletResponse response,FilterChain chain)throws IOException,ServletException{HttpServletRequest q=(HttpServletRequest)request;HttpServletResponse s=(HttpServletResponse)response;q.setCharacterEncoding("UTF-8");s.setCharacterEncoding("UTF-8");String id=UUID.randomUUID().toString();s.setHeader("X-Request-ID",id);MDC.put("requestId",id);try{chain.doFilter(request,response);}finally{MDC.remove("requestId");}}}
